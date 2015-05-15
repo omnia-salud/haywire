@@ -14,5 +14,6 @@ interface HaywireOpts {
   threshold: number;
   interval: number;
   limit: number;
-  ping: PingOpts
+  ping: PingOpts;
+  onChange: (state: State) => any;
 }

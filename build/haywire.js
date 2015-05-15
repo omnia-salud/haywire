@@ -56,8 +56,10 @@ var Haywire;
             timeout: 1500,
             status: 200
         },
-        interval: 300,
-        limit: 8000
+        interval: 500,
+        limit: 8000,
+        onChange: function () {
+        } // do nothing.
     };
     function _merge(a, b) {
         for (var key in b) {
@@ -89,10 +91,11 @@ var Haywire;
         }
         function _do() {
             setTimeout(function () {
-                pinger.ping(function (ok) {
+                pinger.ping(function (current) {
                     var last = buffer.last();
-                    buffer.add(ok);
-                    interval = updateInterval(ok, last);
+                    interval = updateInterval(current, last);
+                    buffer.add(current);
+                    opts.onChange(status());
                     _do();
                 });
             }, interval);

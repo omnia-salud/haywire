@@ -67,8 +67,9 @@ module Haywire {
       timeout: 1500,
       status: 200
     },
-    interval: 300,
-    limit: 8000
+    interval: 500,
+    limit: 8000,
+    onChange: function () {} // do nothing.
   }
 
   export function _merge(a, b: any): any {
@@ -99,10 +100,11 @@ module Haywire {
 
     function _do() {
       setTimeout(() => {
-        pinger.ping((ok) => {
+        pinger.ping((current) => {
           var last = buffer.last();
-          buffer.add(ok);
-          interval = updateInterval(ok, last);
+          interval = updateInterval(current, last);
+          buffer.add(current);
+          opts.onChange(status())
           _do();
         });
       }, interval);
