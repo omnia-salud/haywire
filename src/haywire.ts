@@ -60,7 +60,7 @@ module Haywire {
     { id: 2, text: "Offline" },
   ];
   var defaults: HaywireOpts = {
-    threshold: 5,
+    threshold: 4,
     ping: {
       verb: 'GET',
       path: '/healthcheck',
