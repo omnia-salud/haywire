@@ -16,7 +16,7 @@ To start checking your connection status:
 
 ## How to get it
 
-You can the development, minified and minified + gzipped releases in the [build folder](https://github.com/omnia-salud/delta/tree/master/src).
+You can the development, minified and minified + gzipped releases in the [build folder](https://github.com/omnia-salud/haywire/tree/master/build).
 
 ## How does it work?
 
