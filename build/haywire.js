@@ -6,6 +6,10 @@ var Haywire;
             this.options = options;
         }
         Pinger.prototype.ping = function (callback) {
+            // don't even try to make an xhr if we're offline.
+            if (!window.navigator.onLine) {
+                callback(false);
+            }
             var xhr = new XMLHttpRequest();
             xhr.timeout = this.options.timeout;
             var status = this.options.status;
@@ -49,7 +53,7 @@ var Haywire;
         { id: 2, text: "Offline" },
     ];
     var defaults = {
-        threshold: 5,
+        threshold: 4,
         ping: {
             verb: 'GET',
             path: '/healthcheck',
