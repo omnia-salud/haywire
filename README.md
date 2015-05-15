@@ -54,7 +54,7 @@ In this example, not only do you set the callback function, but also:
 
 These are the configuration options you can pass to Haywire, with their defaults:
 
-```json
+```javascript
 {
     'threshold': 5, // number of requests that should fail/succeed before considering the connection to be offline/online
     'ping': {
