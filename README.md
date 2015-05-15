@@ -56,21 +56,22 @@ These are the configuration options you can pass to Haywire, with their defaults
 
 ```json
 {
-    threshold: 5, // number of requests that should fail/succeed before considering the connection to be offline/online
-    ping: {
-      verb: 'GET', // ping request http verb
-      path: '/healthcheck', // ping request path
-      timeout: 1500, // ping request connection timeout in milliseconds
-      status: 200 // expected http status code from the ping response
+    'threshold': 5, // number of requests that should fail/succeed before considering the connection to be offline/online
+    'ping': {
+      'verb': 'GET', // ping request http verb
+      'path': '/healthcheck', // ping request path
+      'timeout': 1500, // ping request connection timeout in milliseconds
+      'status': 200 // expected http status code from the ping response
     },
-    interval: 500, // initial ping interval
-    limit: 8000, // maximum ping interval
-    onChange: function () {} // callback executed after every ping
+    'interval': 500, // initial ping interval
+    'limit': 8000, // maximum ping interval
+    'onChange': function () {} // callback executed after every ping
 }
+
+```
 
 # How to get it
 
-```
 You can the development, minified and minified + gzipped releases in the [build folder](https://github.com/omnia-salud/haywire/tree/master/build).
 
 ## Need help?
