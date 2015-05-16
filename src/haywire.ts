@@ -11,7 +11,7 @@ module Haywire {
     ping(callback: (success: boolean) => void) {
 
       // don't even try to make an xhr if we're offline.
-      if (!window.navigator.onLine) {
+      if (false === window.navigator.onLine) {
         callback(false);
       }
       var xhr = new XMLHttpRequest();
