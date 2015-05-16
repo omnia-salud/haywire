@@ -7,7 +7,7 @@ var Haywire;
         }
         Pinger.prototype.ping = function (callback) {
             // don't even try to make an xhr if we're offline.
-            if (!window.navigator.onLine) {
+            if ('boolean' == typeof navigator.onLine && !window.navigator.onLine) {
                 callback(false);
             }
             var xhr = new XMLHttpRequest();
