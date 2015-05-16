@@ -9,7 +9,7 @@ A minimal (less than 1k minified and gzipped) javascript library for network iss
 * Checks the availability of your site by pinging a healthcheck url.
 * Remembers past results so it can tell between **offline**, **online** and **_"flaky"_**  (intermittent) conections.
 * Uses an exponential backoff policy so it doesn't flood your servers with requests.
-* It's fully [configurable]().
+* It's fully [configurable](https://github.com/omnia-salud/haywire#configuration-and-defaults).
 
 ## A trivial example
 
@@ -56,7 +56,7 @@ These are the configuration options you can pass to Haywire, with their defaults
 
 ```javascript
 {
-    'threshold': 5, // number of requests that should fail/succeed before considering the connection to be offline/online
+    'threshold': 4, // number of requests that should fail/succeed before considering the connection to be offline/online
     'ping': {
       'verb': 'GET', // ping request http verb
       'path': '/healthcheck', // ping request path
