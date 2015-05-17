@@ -2,6 +2,7 @@
 
 A minimal (less than 1k minified and gzipped) javascript library for network issues detection.
 
+![Build](https://travis-ci.org/omnia-salud/haywire.svg?branch=master)
 [![License](https://img.shields.io/apm/l/vim-mode.svg)](http://github.com/omnia-salud/delta/blob/master/LICENSE.txt)
 
 ## How does Haywire work?
