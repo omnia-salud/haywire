@@ -51,5 +51,6 @@ module.exports = function(grunt) {
 
   // Default task(s).
   grunt.registerTask('default', ['typescript', 'mocha', 'uglify', 'compress']);
+  grunt.registerTask('test', ['typescript', 'mocha']);
 
 };
