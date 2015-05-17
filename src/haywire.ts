@@ -28,7 +28,7 @@ module Haywire {
     }
   }
 
-  class CircularBuffer {
+  export class CircularBuffer {
     size: number;
     values: boolean[];
 
@@ -38,8 +38,8 @@ module Haywire {
     }
 
     add(value: boolean): void {
-      if (this.values.length > this.size) {
-        this.values.shift()
+      if (this.values.length === this.size) {
+        this.values.shift();
       }
       this.values.push(value);
     }

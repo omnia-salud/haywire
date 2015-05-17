@@ -5,13 +5,21 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
     typescript: {
       base: {
-        src: ['src/haywire.ts'],
+        src: ['src/haywire.ts', 'src/haywire_tests.ts'],
         dest: 'build',
         options: {
           module: 'amd',
           target: 'es5',
           basePath: 'src'
         }
+      }
+    },
+    mocha: {
+      all: {
+        src: ['test/test_runner.html'],
+      },
+      options: {
+        run: true
       }
     },
     uglify: {
@@ -36,12 +44,12 @@ module.exports = function(grunt) {
     }
   });
 
-  // Load the plugin that provides the "uglify" task.
-  grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-typescript');
+  grunt.loadNpmTasks('grunt-mocha');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-compress');
 
   // Default task(s).
-  grunt.registerTask('default', ['typescript', 'uglify', 'compress']);
+  grunt.registerTask('default', ['typescript', 'mocha', 'uglify', 'compress']);
 
 };

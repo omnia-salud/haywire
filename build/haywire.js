@@ -29,7 +29,7 @@ var Haywire;
             this.values = [];
         }
         CircularBuffer.prototype.add = function (value) {
-            if (this.values.length > this.size) {
+            if (this.values.length === this.size) {
                 this.values.shift();
             }
             this.values.push(value);
@@ -45,6 +45,7 @@ var Haywire;
         };
         return CircularBuffer;
     })();
+    Haywire.CircularBuffer = CircularBuffer;
     var pinger;
     var buffer;
     var states = [
