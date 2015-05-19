@@ -19,6 +19,7 @@ module.exports = function(grunt) {
         src: ['test/test_runner.html'],
       },
       options: {
+        reporter: 'Spec',
         run: true
       }
     },
