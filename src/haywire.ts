@@ -74,7 +74,14 @@ module Haywire {
     },
     interval: 500,
     limit: 8000,
-    onChange: function () {} // do nothing.
+    onChange: function () {},
+    backoffPolicy: function(result: boolean, last: boolean, interval: number, options: HaywireOpts): number {
+      if (result === last) {
+        return Math.min(interval * 2, options.limit)
+      } else {
+        return options.interval;
+      }
+    }
   }
 
   export function _merge(a, b: any): any {
@@ -95,19 +102,11 @@ module Haywire {
 
     var interval: number = opts.interval;
 
-    function updateInterval(result, last: boolean): number {
-      if (result === last) {
-        return Math.min(interval * 2, opts.limit)
-      } else {
-        return opts.interval;
-      }
-    }
-
     function _do() {
       setTimeout(() => {
         pinger.ping((current) => {
           var last = buffer.last();
-          interval = updateInterval(current, last);
+          interval = opts.backoffPolicy(current, last, interval, opts);
           buffer.add(current);
           opts.onChange(status())
           _do();

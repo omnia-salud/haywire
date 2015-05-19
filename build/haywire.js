@@ -64,7 +64,15 @@ var Haywire;
         interval: 500,
         limit: 8000,
         onChange: function () {
-        } // do nothing.
+        },
+        backoffPolicy: function (result, last, interval, options) {
+            if (result === last) {
+                return Math.min(interval * 2, options.limit);
+            }
+            else {
+                return options.interval;
+            }
+        }
     };
     function _merge(a, b) {
         for (var key in b) {
@@ -86,19 +94,11 @@ var Haywire;
         buffer = new CircularBuffer(opts.threshold);
         pinger = new Pinger(opts.ping);
         var interval = opts.interval;
-        function updateInterval(result, last) {
-            if (result === last) {
-                return Math.min(interval * 2, opts.limit);
-            }
-            else {
-                return opts.interval;
-            }
-        }
         function _do() {
             setTimeout(function () {
                 pinger.ping(function (current) {
                     var last = buffer.last();
-                    interval = updateInterval(current, last);
+                    interval = opts.backoffPolicy(current, last, interval, opts);
                     buffer.add(current);
                     opts.onChange(status());
                     _do();

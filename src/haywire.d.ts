@@ -16,4 +16,5 @@ interface HaywireOpts {
   limit?: number;
   ping?: PingOpts;
   onChange?: (state: State) => any;
+  backoffPolicy: (current: boolean, last: boolean, interval: number, opts: HaywireOpts) => number;
 }
