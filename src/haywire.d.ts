@@ -4,16 +4,16 @@ interface State {
 }
 
 interface PingOpts {
-  verb: string;
-  path: string;
-  timeout: number;
-  status: number;
+  verb?: string;
+  path?: string;
+  timeout?: number;
+  status?: number;
 }
 
 interface HaywireOpts {
-  threshold: number;
-  interval: number;
-  limit: number;
-  ping: PingOpts;
-  onChange: (state: State) => any;
+  threshold?: number;
+  interval?: number;
+  limit?: number;
+  ping?: PingOpts;
+  onChange?: (state: State) => any;
 }

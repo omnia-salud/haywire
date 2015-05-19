@@ -1,5 +1,6 @@
 /// <reference path="../lib/mocha.d.ts" />
 /// <reference path="../lib/chai.d.ts" />
+/// <reference path="../lib/sinon.d.ts" />
 /// <reference path="haywire.ts" />
 describe('Haywire#Utils', () => {
 
@@ -29,30 +30,25 @@ describe('Haywire#Utils', () => {
 });
 
 describe('Haywire#CircularBuffer', () => {
+  var size = 4;
+  var buffer = new Haywire.CircularBuffer(size);
+
   it('should store a fixed number of values', () => {
-    var size = 4;
-    var buffer = new Haywire.CircularBuffer(size);
     [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].forEach((it) => buffer.add(it % 2 === 0));
     chai.assert.equal(buffer.values.length, size);
   });
 
   it('should report all OK if every value is true', () => {
-    var size = 4;
-    var buffer = new Haywire.CircularBuffer(size);
     [true, true, true, true].forEach((it) => buffer.add(it));
     chai.assert.isTrue(buffer.allOk());
   });
 
   it('should report all failed if every value is false', () => {
-    var size = 4;
-    var buffer = new Haywire.CircularBuffer(size);
     [false, false, false, false].forEach((it) => buffer.add(it));
     chai.assert.isTrue(buffer.allFailed());
   });
 
   it('should report neither failed nor OK if at least one value is false', () => {
-    var size = 4;
-    var buffer = new Haywire.CircularBuffer(size);
     [true, true, true, false].forEach((it) => buffer.add(it));
     chai.assert.isFalse(buffer.allOk());
     chai.assert.isFalse(buffer.allFailed());
