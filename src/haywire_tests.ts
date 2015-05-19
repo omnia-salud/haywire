@@ -1,6 +1,5 @@
 /// <reference path="../lib/mocha.d.ts" />
 /// <reference path="../lib/chai.d.ts" />
-/// <reference path="../lib/sinon.d.ts" />
 /// <reference path="haywire.ts" />
 describe('Haywire#Utils', () => {
 
