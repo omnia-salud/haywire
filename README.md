@@ -22,9 +22,9 @@ To start checking your connection status:
     }});
 ```
 
-## Another example
+Haywire periodically makes an http request: `GET /healthcheck`, using `XMLHttpRequest`. If the call returns a `200 OK` status (everything's fine), it increases the interval time and tries again in the future. Every time the status is checked, your `callback` function is invoked.
 
-Here, Haywire periodically pings your `/healthcheck` url. If everything's fine, it increases the interval time and tries again in the future. Every time the status is checked, your `callback` function is invoked.
+## Another example
 
 ```javascript
     function reportNetworkStatus(status) {
@@ -66,7 +66,8 @@ These are the configuration options you can pass to Haywire, with their defaults
     },
     'interval': 500, // initial ping interval
     'limit': 8000, // maximum ping interval
-    'onChange': function () {} // callback executed after every ping
+    'onChange': function (status) {}, // callback executed after every ping
+    'backoffPolicy': function (result, last, interval, options) {} // backoff policy
 }
 
 ```
