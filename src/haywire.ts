@@ -8,23 +8,28 @@ module Haywire {
       this.options = options;
     }
 
-    ping(callback: (success: boolean) => void) {
-
-      // don't even try to make an xhr if we're offline.
-      if (false === window.navigator.onLine) {
-        callback(false);
-      }
+    doPing(callback: (success: boolean) => void) {
       var xhr = new XMLHttpRequest();
       xhr.timeout = this.options.timeout;
 
       var status = this.options.status;
-      xhr.onreadystatechange = function (ev) {
+      xhr.onreadystatechange = (event) => {
         if (xhr.readyState === 4) {
           callback(xhr.status === status)
         }
       }
       xhr.open(this.options.verb, this.options.path, true);
       xhr.send();
+    }
+
+    ping(callback: (success: boolean) => void) {
+
+      // don't even try to make an xhr if we're offline.
+      if (false === window.navigator.onLine) {
+        callback(false);
+      } else {
+        this.doPing(callback);
+      }
     }
   }
 

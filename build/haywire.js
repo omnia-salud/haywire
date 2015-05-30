@@ -5,21 +5,26 @@ var Haywire;
         function Pinger(options) {
             this.options = options;
         }
-        Pinger.prototype.ping = function (callback) {
-            // don't even try to make an xhr if we're offline.
-            if (false === window.navigator.onLine) {
-                callback(false);
-            }
+        Pinger.prototype.doPing = function (callback) {
             var xhr = new XMLHttpRequest();
             xhr.timeout = this.options.timeout;
             var status = this.options.status;
-            xhr.onreadystatechange = function (ev) {
+            xhr.onreadystatechange = function (event) {
                 if (xhr.readyState === 4) {
                     callback(xhr.status === status);
                 }
             };
             xhr.open(this.options.verb, this.options.path, true);
             xhr.send();
+        };
+        Pinger.prototype.ping = function (callback) {
+            // don't even try to make an xhr if we're offline.
+            if (false === window.navigator.onLine) {
+                callback(false);
+            }
+            else {
+                this.doPing(callback);
+            }
         };
         return Pinger;
     })();
