@@ -1,0 +1,29 @@
+{
+  "name": "haywire",
+  "version": "1.0.0",
+  "homepage": "https://github.com/omnia-salud/haywire",
+  "authors": [
+    "Pablo Fernandez <pablo@omniasalud.com>"
+  ],
+  "description": "A minimal javascript library for network issues detection.",
+  "main": "build/haywire.js",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "offline",
+    "online",
+    "browser",
+    "connection",
+    "status",
+    "detection"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
