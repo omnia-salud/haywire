@@ -74,7 +74,9 @@ These are the configuration options you can pass to Haywire, with their defaults
 
 # How to get it
 
-You can the development, minified and minified + gzipped releases in the [build folder](https://github.com/omnia-salud/haywire/tree/master/build).
+You can either fetch the latest release from the github [releases tab](https://github.com/omnia-salud/haywire/releases/) or download it directly from bower:
+
+`$> bower install haywire`
 
 ## Need help?
 
