@@ -12,6 +12,8 @@ A minimal (less than 1k minified and gzipped) javascript library for network iss
 * Uses an exponential backoff policy so it doesn't flood your servers with requests.
 * It's fully [configurable](https://github.com/omnia-salud/haywire#configuration-and-defaults).
 
+* check the [demo app](http://bit.ly/haywiredemo)!
+
 ## A trivial example
 
 To start checking your connection status:
